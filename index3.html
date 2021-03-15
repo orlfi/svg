@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="world-map">
+        <!-- <svg>
+            <polygon data-id="1" points="52,270 93,305 151,305 151,364 137,364 52,342 17,311"></polygon>
+        </svg> -->
+        <!-- <svg>
+               <path
+                    style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                    d="m 29.482142,57.452381 77.863098,-10.583333 6.80357,58.208332 z" id="is1" />
+        </svg> -->
+
+        <!-- <svg width="100%" height="100%" viewBox="400 0 500 320" preserveAspectRatio="xMidYMid meet" -->
+        <svg width="100%" height="100%" viewBox="0 0 1000 1000">
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <polygon data-id="1" points="52,270 93,305 151,305 151,364 137,364 52,342 17,311"></polygon>
+
+            <path id="estonia" d="M517.8,143.7l-5.6-0.2l-3.5,2.2l0,1.6l2.3,2.2l7.2,1.2L517.8,143.7L517.8,143.7z
+        M506.8,147.6l-1.5-0.1l-0.9,0.9l0.6,1l1.5,0.1l0.8-1.2L506.8,147.6L506.8,147.6z
+        M506.6,151.7l-1.5-0.1l-2.7,3.2v1.5l0.9,0.4l1.8,0.1l2.9-2.4l0.4-0.8L506.6,151.7L506.6,151.7z"></path>
+
+            <!-- <path id="sweden" d="M497.7,104.6l2,1.8h3.7l2,3.9l0.5,6.7l-5,3.5v3.5l-3.5,4.8l-2,0.2l-2.8,4.6l0.2,4.4l4.8,3.5l-0.4,2l-1.8,2.8
+            l-2.8,2.4l0.2,7.9l-4.2,1.5l-1.5,3.1h-2l-1.1-5.5l-4.6-7l3.8-6.3l0.3-15.6l2.6-1.4l0.6-8.9l7.4-10.6L497.7,104.6L497.7,104.6z
+            M498.5,150.2l-2.1,1.7l1.1,2.4l1.9-1.8L498.5,150.2L498.5,150.2z"></path> -->
+
+            <polygon points="160 10 180 30 155 15 180 20"></polygon>
+            <path d="M160 10L180 30L155 15 L180 20 z"></path>
+        </svg>
+    </div>
+    <div id="is1text">
+        текст
+    </div>
+    <style type="text/css">
+        #world-map {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        polygon {
+            fill: #FFDBA4;
+            cursor: pointer;
+        }
+        polygon:hover {
+            stroke: #002868 !important;
+            stroke-width: 2px;
+            stroke-linejoin: round;
+            fill: #002868 !important;
+            cursor: pointer;
+        }
+
+        path:hover {
+            stroke: #002868 !important;
+            stroke-width: 2px;
+            stroke-linejoin: round;
+            fill: #002868 !important;
+            cursor: pointer;
+        }
+
+        .clicked {
+            fill: #ff9800;
+            stroke: #ff9800;
+            stroke-width: 2px;
+            stroke-linejoin: round;
+            ;
+        }
+    </style>
+
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('polygon').on("click", function () {
+            $("#is1text")[0].innerHTML = "test";
+        });
+
+        $('path').on("click", function () {
+            var n = $(this).attr("class");
+
+            if (n == "clicked") {
+                $(this).attr("class", "");
+            }
+            else {
+                $(this).attr("class", "clicked");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

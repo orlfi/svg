@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <svg id="svg" viewBox="30 30 300 300">
+
+        <path id="circuit" d="M187.476,214.443c-2.566,11.574-4.541,22.658-7.542,33.456
+            c-3.558,12.8-7.14,25.713-12.242,37.938c-10.223,24.495-41.321,29.239-58.824,9.548c-9.592-10.792-11.295-26.9-3.539-40.556
+            c11.233-19.778,25.391-37.46,40.447-54.438c1.07-1.207,2.116-2.436,3.893-4.484c-7.212,0.9-13.349,1.988-19.529,2.374
+            c-16.283,1.018-32.578,2.21-48.881,2.437c-18.686,0.261-32.846-10.154-37.071-26.055c-6.762-25.449,15.666-48.973,41.418-43.338
+            c23.645,5.175,46.447,12.901,68.424,23.051c1.033,0.478,2.083,0.918,3.933,1.731c-0.83-1.947-1.341-3.225-1.911-4.475
+            c-9.896-21.701-18.159-43.986-23.192-67.337c-4.587-21.28,8.933-40.56,29.946-43.257c20.134-2.585,38.124,12.991,39.091,34.294
+            c1.029,22.682-0.049,45.292-3.58,67.755c-0.17,1.079-0.152,2.188-0.246,3.659c8.05-6.831,15.471-13.737,23.52-19.811
+            c11.147-8.412,22.398-16.795,34.27-24.113c18.35-11.312,40.821-4.481,50.028,14.385c9.091,18.628,0.131,40.586-20.065,48.198
+            c-11.034,4.158-22.248,7.944-33.594,11.143c-11.321,3.191-22.908,5.438-34.866,8.212c1.189,0.81,2.19,1.504,3.205,2.18
+            c18.402,12.261,37.157,24.032,55.101,36.932c14.769,10.616,18.619,29.317,10.675,44.578c-7.537,14.477-25.151,22.136-40.767,17.583
+            c-7.583-2.212-14.022-6.469-18.523-12.919c-12.463-17.86-24.638-35.924-36.898-53.925
+            C189.24,217.849,188.547,216.357,187.476,214.443z" />
+
+
+        <!-- <circle id="thumb" cx="187.476" cy="214.443" r="5" fill="black" /> -->
+        <rect id="thumb" x="187.476" y="214.443" width="5" height="10" fill="black" />
+
+    </svg>
+    <style>
+        svg {
+            border: 1px solid #d9d9d9;
+            max-width: 100vh
+        }
+
+
+        #circuit {
+            stroke: black;
+            fill: none;
+            stroke-width: 5px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            fill-opacity: .85
+        }
+
+        circle,
+        rect {
+            fill: red
+        }
+    </style>
+    <script type="text/javascript">
+        let totalLength = circuit.getTotalLength();
+
+
+        let value = 0;
+
+        window.addEventListener("keydown", (e) => {
+
+            if (e.keyCode == 37) { value++; }
+            else if (e.keyCode == 39) { value--; }
+
+            if (value > 100) { value %= 100; }
+            if (value < 0) { value += 100 }
+
+            let pos = circuit.getPointAtLength(totalLength * value / 100);
+             //updateElement({ x: position.x, y: position.y }, thumb)
+            //let str="translate("+position.x+","+position.y+")";
+            //thumb.setAttribute("transform", "rotate(1.2)");
+            //thumb.setAttribute("transform", "translate(" + pos.x + "," + pos.y + ") rotate(" + rad2deg(angle) + ")");
+            thumb.setAttribute("transform", "translate(" + pos.x + "," + pos.y + ")");
+        })
+
+        // window.addEventListener("keydown", (e) => {
+
+        //     if (e.keyCode == 37) { value++; }
+        //     else if (e.keyCode == 39) { value--; }
+
+        //     if (value > 100) { value %= 100; }
+        //     if (value < 0) { value += 100 }
+
+        //     let position = circuit.getPointAtLength(totalLength * value / 100);
+        //     updateElement({ x: position.x, y: position.y }, thumb)
+
+        // })
+
+
+        function updateElement(o, element) {
+            for (var name in o) {
+                if (o.hasOwnProperty(name)) {
+                    element.setAttributeNS(null, name, o[name]);
+                }
+            }
+            return element;
+        }
+    </script>
+</body>
+
+</html>
